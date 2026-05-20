@@ -3,22 +3,20 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 async function register (params) {
-  const { email, senha, nome, tipo_acesso } = params
+  const { email, senha, nome } = params
   const sql = `
     insert into usuarios (
       email,
       senha_hash,
-      nome,
-      tipo_acesso
+      nome
     ) values (
       $1,
       $2,
-      $3,
-      coalesce($4, 'padrao')
+      $3
     ) returning id, email, nome, tipo_acesso
   `
   const senhaHash = await bcrypt.hash(senha, 10)
-  const result = await db.query(sql, [email, senhaHash, nome, tipo_acesso])
+  const result = await db.query(sql, [email, senhaHash, nome])
   return result.rows
 }
 
