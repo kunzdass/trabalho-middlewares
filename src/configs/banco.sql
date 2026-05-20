@@ -35,18 +35,3 @@ CREATE TABLE faturas (
 CREATE INDEX idx_vendas_usuario ON vendas(usuario_id);
 CREATE INDEX idx_faturas_usuario ON faturas(usuario_id);
 CREATE INDEX idx_faturas_status ON faturas(status);
-
-INSERT INTO usuarios (nome, email, senha_hash, tipo_acesso)
-VALUES
-(
-  'Administrador Geral',
-  'admin@sistema.com',
-  '$2b$12$Z6Wv7.N9Zlyg7eW91X3hbuv7wI1gshUfHofY.mI8hMvj0rSmcIByO',
-  'admin'
-),
-(
-  'Cliente Padrão',
-  'cliente@sistema.com',
-  '$2b$12$Z6Wv7.N9Zlyg7eW91X3hbuv7wI1gshUfHofY.mI8hMvj0rSmcIByO',
-  'padrao'
-);
